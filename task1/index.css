@@ -137,9 +137,7 @@ body {
 .main-container {
     display: flex;
     justify-content: center;
-    border: 1px solid var(--main-border-color);
     box-sizing: border-box;
-    padding: 40px 128px 40px 128px; 
     width: 1360px;
 }
 
@@ -166,7 +164,7 @@ align-items: center;
     height: 192px;
 }
 
-.introduction-section-block__title-text{
+.introduction-section-block__title-and-subtitle{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,10 +175,18 @@ align-items: center;
 .block-title {
     margin-top: 0;
     margin-bottom: 0;
-    color: #000000CC;
+    padding:  76px 224px 24px 224px;
+    width: 912px;
+    font-family: Roboto;
     font-size: 44px;
     font-weight: 900;
     line-height: 48px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.introduction-section-block_block-title {
+    padding: 0px 0px 0px 0px;
 }
 
 
@@ -192,7 +198,7 @@ align-items: center;
     line-height: 24px;
 }
 
-.introduction-section-block__btn-info {
+.button {
     border-style: unset;
     width: 150px;
     height: 56px;
@@ -209,7 +215,6 @@ align-items: center;
 
 .introduction-section-block__inner {
     display: flex;
-    column-gap: 3rem;
 }   
 
 .introduction-section-block__img {
@@ -229,31 +234,17 @@ align-items: center;
     height: 556px;
 }
 
-.section-block__title-text{
-    width: 912px;
-    height: 48px;
-    font-family: Roboto;
-    font-size: 44px;
-    font-weight: 900;
-    line-height: 48px;
-    letter-spacing: 0px;
-    text-align: center;
-}
-
 .section-block__inner{
     display: flex;
     justify-content: center;
     width: 1360px;
-    height: 408px;
     padding: 24px 128px 24px 128px;
 }
 
 .section-block__inner-content{
     display: flex;
     justify-content: space-between;
-
     width: 1104px;
-    height: 360px;
 }
 
 .section-block__inner-content-img {
@@ -265,20 +256,17 @@ align-items: center;
 .list-with-dash {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 12px
+}
+
+.list-with-dash_who-suit-size {
     width: 341px;
     height: 144px;
-    top: 48px;
-    left: 768px;
-    gap: 12px
-
 }
 
 .list-with-dash__dash-text {
     display: flex;
-    justify-content: space-between;
-    width: 336px;
-    height: 48px;
+    gap: 8px;
 }
 
 .list-with-dash__dash-block{
@@ -297,7 +285,6 @@ align-items: center;
 }
 
 .list-with-dash__text{
-    width: 316px;
     font-family: Roboto;
     font-size: 15px;
     font-weight: 400;
@@ -312,8 +299,10 @@ align-items: center;
 }
 
 .card-block {
+    box-sizing: border-box;
     display: flex;
-    padding: 24px, 128px, 24px, 128px;
+    justify-content: space-between;
+    padding: 24px 128px 24px 128px;
     gap: 48px;
 }
 
@@ -364,7 +353,6 @@ align-items: center;
 
 .section-block_free-education {
     width:  1360px;
-    height:  516px;
 }
 
 .section-block_how-get-course  {
@@ -374,32 +362,30 @@ align-items: center;
 
 /*!!!!!!!!*/
 .card_get{
+    position: absolute;
+    bottom: 0px;
     width: 240px;
-height: 160px;
-padding: 56px, 32px, 32px, 32px;
-border-radius: 24px;
+    height: 160px;
+    padding: 56px 32px 32px 32px;
+    border-radius: 24px;
 }
 
 
     /*FOOTER!*/
 
-.footer{
+footer{
     width: 1360px;
     height: 192px;
-    border: 1px solid var(--main-border-color);
 }
 
 .info {
     width: 1360px;
-    height: 128px;
-    margin-top: 64px;
-    border: 1px solid var(--main-border-color);
 }
 
 .info__line-block {
     width: 1104px;
     height: 20px;
-    margin-top: 44px;
+    margin-top: 108px;
     margin-left: 128px;
     box-shadow: 0px -1px 0px 0px #E7E8EA inset;
 }
@@ -437,4 +423,69 @@ border-radius: 24px;
 
 .email{
     color: #336FEE;
+}
+
+
+
+
+
+
+.section-block_what-build-education_card{
+    width: 1360px;
+    height: 260px;
+}
+
+.card_what-build-education {
+    width: 528px;
+    height: 212px;
+}
+
+.card_with-image {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
+
+.free-education_img {
+    width: 36px;
+    height: 36px;
+}
+
+
+
+.card__card-number-block {
+    position: relative;
+    width: 240px;
+    height: 188px;
+}
+
+.card_number {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    width: 56px;
+    height: 56px;
+    margin-left: 92px;
+    border-radius: 16px;
+    background-color: #333333;
+}
+
+.card_number-text {
+    width: 56px;
+    height: 32px;
+    margin-top: 12px;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 32px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;   
+    color: #FFFFFF; 
+}
+
+.how-get-course__card-text {
+    text-align: center;
 }
