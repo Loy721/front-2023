@@ -197,7 +197,7 @@ html, body {
 }
 
 .button:focus{
-    background-color: #FFDD2D;
+    outline: 2px solid #9d8b2f;
 }
 
 .introduction-section-block__img {
