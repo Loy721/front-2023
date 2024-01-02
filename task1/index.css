@@ -175,6 +175,8 @@ html, body {
 }
 
 .button {
+    transition: background-color 0.5s;
+    cursor: pointer;
     border-style: unset;
     width: 150px;
     height: 56px;
