@@ -1,24 +1,82 @@
+async function creatorInfo() {
+    const res = await fetch(' http://localhost:3000/creatorInfo');
+    const info = await res.json();
+    document.querySelector('header .fio').textContent = `${info.name} ${info.group} ${info.repo}`
+}
+
+creatorInfo();
+
+function showPreloader() {
+    document.querySelector('.overlay').style.display = 'block';
+    document.querySelector('.loader').style.display = 'flex';
+}
+
+function hidePreloader() {
+    document.querySelector('.loader').style.display = 'none';
+    document.querySelector('.overlay').style.display = 'none';
+}
+
+async function addCardInfo(data) {
+    data.id = data.productCode;
+    try {
+        showPreloader();
+        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        await delay(2); // Задержка в 2 секунды, чтобы показать лоадер
+
+        const res = await fetch('http://localhost:3000/card-info', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            body: JSON.stringify(data)
+        });
+        hidePreloader();
+        return await res.json();
+    } catch (error) {
+        console.error(error);
+        hidePreloader();
+    }
+}
+
+async function getCardsInfo() {
+    showPreloader();
+    const res = await fetch('http://localhost:3000/card-info');
+    const data = await res.json();
+    hidePreloader();
+    return data;
+}
+
+async function deleteCardInfo(id) {
+    showPreloader();
+    await fetch(`http://localhost:3000/card-info/${id}`, {
+        method: 'DELETE'
+    });
+    hidePreloader();
+}
+
 document.getElementById('setupButton').addEventListener('click', () => {
     const cards = [
         {
+            id: 333,
             name: "Цитата пацана",
             imageLink: "https://chelny-izvest.ru/images/uploads/news/2022/2/15/c288cb40b090f1484ec62b9784d4244b.jpg",
             description: "А теперь запомни, ты теперь пацан, ты теперь с улицы, а кругом враги",
-            productCode: 1,
+            productCode: 333,
             supplier: "Пацан",
         },
         {
+            id: 444,
             name: "Цитата Стетхема",
             imageLink: "https://citatnica.ru/wp-content/uploads/2019/08/Jason-Statham-bald-768x490.jpg",
             description: '"Моя тренировка начинается, когда я открываю ногой бутылочку пивка. На этом она и заканчивается"',
-            productCode: 2,
+            productCode: 444,
             supplier: "Стетхем",
         }
     ];
     const listCards = window.document.querySelector(".list-cards");
-    cards.map((cardInfo) => listCards.append(createCard(cardInfo)));
-    window.localStorage.setItem("card-info", JSON.stringify(cards));
-    window.location.reload();
+    cards.forEach((card) => {
+        addCardInfo(card).then((res) => listCards.append(createCard(res)));
+    });
 })
 
 const form = document.querySelector('.data-form');
@@ -26,15 +84,12 @@ form.addEventListener("submit", addCard);
 
 function addCard(event) {
     event.preventDefault();
-    const cardsInfo = JSON.parse(window.localStorage.getItem("card-info"));
     let cardInfo = {};
     const inputs = event.target.querySelectorAll("input");
-    inputs.forEach((item) => (cardInfo[item.id] = item.value));
-    cardsInfo.push(cardInfo);
-    window.localStorage.setItem("card-info", JSON.stringify(cardsInfo));
+    inputs.forEach((input) => (cardInfo[input.id] = input.value));
     const listCards = window.document.querySelector(".list-cards");
-    listCards.append(createCard(cardInfo));
-    inputs.forEach((item) => (item.value = ""));
+    addCardInfo(cardInfo).then((res) => listCards.append(createCard(res)));
+    inputs.forEach((input) => (input.value = ""));
 }
 
 const createEditButton = (name, imageLink, description, productCode, supplier) => {
@@ -74,16 +129,13 @@ const createDeleteButton = (productCode) => {
 
 function deleteCard(productCode) {
     let card = document.getElementById(productCode);
-    let cards = JSON.parse(window.localStorage.getItem("card-info"));
-    const nonDeletedCards = cards.filter((item) => item.productCode !== productCode);
-    window.localStorage.setItem("card-info", JSON.stringify(nonDeletedCards));
+    deleteCardInfo(productCode);
     card.remove();
 }
 
 (function onLoad() {
-    let cardsInfo = JSON.parse(window.localStorage.getItem("card-info"));
     const listCards = window.document.querySelector(".list-cards");
-        cardsInfo.map((item) => listCards.append(createCard(item)));
+    getCardsInfo().then((cardsInfo) => cardsInfo.map((cardInfo) => listCards.append(createCard(cardInfo))));
 }());
 
 function createCard({name, description, imageLink, productCode, supplier}) {

@@ -1,0 +1,25 @@
+{
+  "card-info": [
+    {
+      "id": 333,
+      "name": "Цитата пацана",
+      "imageLink": "https://chelny-izvest.ru/images/uploads/news/2022/2/15/c288cb40b090f1484ec62b9784d4244b.jpg",
+      "description": "А теперь запомни, ты теперь пацан, ты теперь с улицы, а кругом враги",
+      "productCode": 333,
+      "supplier": "Пацан"
+    },
+    {
+      "id": 444,
+      "name": "Цитата Стетхема",
+      "imageLink": "https://citatnica.ru/wp-content/uploads/2019/08/Jason-Statham-bald-768x490.jpg",
+      "description": "\"Моя тренировка начинается, когда я открываю ногой бутылочку пивка. На этом она и заканчивается\"",
+      "productCode": 444,
+      "supplier": "Стетхем"
+    }
+  ],
+  "creatorInfo": {
+    "name": "Долгих Данила",
+    "group": "6408",
+    "repo": "https://github.com/Loy721"
+  }
+}
