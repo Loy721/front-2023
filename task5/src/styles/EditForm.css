@@ -1,0 +1,13 @@
+.edit-form {
+    background: #1c1717;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    gap: 1rem;
+}
+
+.edit-form__input {
+    width: 42rem;
+}
