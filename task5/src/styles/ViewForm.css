@@ -1,0 +1,33 @@
+.view-form {
+    background: #1c1717;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.view-form__info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.view-form__title {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.view-form__year {
+    color: white;
+    font-size: 14px;
+}
+
+.view-form__genres {
+    color: white;
+    font-size: 17px;
+}

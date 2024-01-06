@@ -1,0 +1,51 @@
+.card {
+    padding: 10px;
+    width: 28rem;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card__img {
+    width: 24rem;
+}
+
+.card__body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.card__title-star-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.card__title {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.card__star {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__edit {
+    width: 14px;
+    height: 14px;
+}
+
+.card__year {
+    font-size: 14px;
+}
+
+.card__genres {
+    font-size: 17px;
+}
